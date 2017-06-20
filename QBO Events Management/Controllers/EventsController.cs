@@ -77,7 +77,17 @@ namespace QBO_Events_Management.Controllers
         }
 
         // POST: Events/Publish/5
-        
+        [HttpPost ,ActionName("Publish")]
+        [ValidateAntiForgeryToken]
+        public ActionResult PublishConfirmed(int id)
+        {
+            Event @event = db.Events.Find(id);
+            @event.IsPublished = true;
+            db.Entry(@event).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
         // GET: Events/Edit/5
         public ActionResult Edit(int? id)
         {
