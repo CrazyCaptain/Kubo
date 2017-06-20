@@ -46,46 +46,16 @@ namespace QBO_Events_Management.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "eventID,Name,Details,StartDate,StartTime,EndDate,EndTime,Venue")] Event @event)
+        public ActionResult Create([Bind(Include = "eventID,Name,Details,Date,Time,Venue")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                @event.IsPublished = false;
-                @event.IsCancelled = false;
-                @event.DateAdded = DateTime.Now;
                 db.Events.Add(@event);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(@event);
-        }
-
-        //GET: Events/Publish/5
-        public ActionResult Publish(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Event @event = db.Events.Find(id);
-            if (@event == null)
-            {
-                return HttpNotFound();
-            }
-            return View(@event);
-        }
-
-        // POST: Events/Publish/5
-        [HttpPost ,ActionName("Publish")]
-        [ValidateAntiForgeryToken]
-        public ActionResult PublishConfirmed(int id)
-        {
-            Event @event = db.Events.Find(id);
-            @event.IsPublished = true;
-            db.Entry(@event).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         // GET: Events/Edit/5
@@ -108,11 +78,10 @@ namespace QBO_Events_Management.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "eventID,Name,Details,StartDate,StartTime,EndDate,EndTime,Venue")] Event @event)
+        public ActionResult Edit([Bind(Include = "eventID,Name,Details,Date,Time,Venue")] Event @event)
         {
             if (ModelState.IsValid)
             {
-                @event.DateAdded = DateTime.Now;
                 db.Entry(@event).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

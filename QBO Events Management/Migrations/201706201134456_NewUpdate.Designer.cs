@@ -6,14 +6,14 @@ namespace QBO_Events_Management.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class RemoveDateModified : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    public sealed partial class NewUpdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveDateModified));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewUpdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706150714125_RemoveDateModified"; }
+            get { return "201706201134456_NewUpdate"; }
         }
         
         string IMigrationMetadata.Source

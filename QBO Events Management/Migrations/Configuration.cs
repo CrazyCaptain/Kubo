@@ -1,6 +1,5 @@
 namespace QBO_Events_Management.Migrations
 {
-    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -11,7 +10,6 @@ namespace QBO_Events_Management.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "QBO_Events_Management.Models.ApplicationDbContext";
         }
 
         protected override void Seed(QBO_Events_Management.Models.ApplicationDbContext context)
@@ -28,60 +26,6 @@ namespace QBO_Events_Management.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-            context.Events.AddOrUpdate( i => i.Name,
-                new Event
-                {
-                    Name = "Qlitan",
-                    Details = "Qlitan",
-                    StartDate = DateTime.Parse("2017-07-15"),
-                    StartTime = TimeSpan.Parse("12:00:00"),
-                    EndDate = DateTime.Parse("2017-07-16"),
-                    EndTime = TimeSpan.Parse("12:00:00"),
-                    Venue = "QBO Innovation Hub",
-                    IsPublished = false,
-                    IsCancelled = false
-                },
-
-                new Event
-                {
-                    Name = "Qlitan3",
-                    Details = "Qlitan3",
-                    StartDate = DateTime.Parse("2017-07-15"),
-                    StartTime = TimeSpan.Parse("12:00:00"),
-                    EndDate = DateTime.Parse("2017-07-16"),
-                    EndTime = TimeSpan.Parse("12:00:00"),
-                    Venue = "QBO Innovation Hub",
-                    IsPublished = false,
-                    IsCancelled = false
-                },
-
-                new Event
-                {
-                    Name = "Qlitan4",
-                    Details = "Qlitan4",
-                    StartDate = DateTime.Parse("2017-07-15"),
-                    StartTime = TimeSpan.Parse("12:00:00"),
-                    EndDate = DateTime.Parse("2017-07-16"),
-                    EndTime = TimeSpan.Parse("12:00:00"),
-                    Venue = "QBO Innovation Hub",
-                    IsPublished = false,
-                    IsCancelled = false
-                },
-
-               new Event
-               {
-                   Name = "Qlitan 2",
-                   Details = "Qlitan 2",
-                   StartDate = DateTime.Parse("2017-07-15"),
-                   StartTime = TimeSpan.Parse("12:00:00"),
-                   EndDate = DateTime.Parse("2017-07-16"),
-                   EndTime = TimeSpan.Parse("12:00:00"),
-                   Venue = "QBO Innovation Hub",
-                   IsPublished = false,
-                   IsCancelled = false
-               }
-
-            );
         }
     }
 }
