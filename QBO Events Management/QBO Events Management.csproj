@@ -87,6 +87,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -150,9 +154,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -197,18 +198,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\EventsController.cs" />
+    <Compile Include="Models\AttendeesModels.cs" />
+    <Compile Include="Properties\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201706201134456_NewUpdate.cs" />
-    <Compile Include="Migrations\201706201134456_NewUpdate.Designer.cs">
-      <DependentUpon>201706201134456_NewUpdate.cs</DependentUpon>
+    <Compile Include="Migrations\201706210521385_EventBrite.cs" />
+    <Compile Include="Migrations\201706210521385_EventBrite.Designer.cs">
+      <DependentUpon>201706210521385_EventBrite.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EventBriteModels.cs" />
     <Compile Include="Models\EventModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -247,13 +250,13 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
+    <Content Include="Views\Manage\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Debug.config">
+    <Content Include="Views\Manage\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Web.Release.config">
+    <Content Include="Views\Manage\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
@@ -292,6 +295,13 @@
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\View.cshtml" />
     <Content Include="Views\Events\Publish.cshtml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -311,8 +321,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706201134456_NewUpdate.resx">
-      <DependentUpon>201706201134456_NewUpdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706210521385_EventBrite.resx">
+      <DependentUpon>201706210521385_EventBrite.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

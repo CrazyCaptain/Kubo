@@ -7,13 +7,13 @@ namespace QBO_Events_Management.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class NewUpdate : IMigrationMetadata
+    public sealed partial class EventBrite : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(NewUpdate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(EventBrite));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706201134456_NewUpdate"; }
+            get { return "201706210521385_EventBrite"; }
         }
         
         string IMigrationMetadata.Source

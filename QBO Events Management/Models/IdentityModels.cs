@@ -49,6 +49,9 @@ namespace QBO_Events_Management.Models
 		
 		public DbSet<Event> Events { get; set; }
 		
+        public DbSet<EventBriteEvents> EventBriteEvent { get; set; }
 
-	}
+        public DbSet<EventAttendees> EventAttendee { get; set; }
+            
+        }
 }

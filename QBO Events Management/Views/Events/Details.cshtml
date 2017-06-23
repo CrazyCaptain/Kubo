@@ -1,4 +1,4 @@
-﻿@model QBO_Events_Management.Models.Event
+﻿@model QBO_Events_Management.Models.EventBriteEvent
 
 @{
     ViewBag.Title = "Details";
@@ -12,48 +12,40 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.ID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.ID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Details)
+            @Html.DisplayNameFor(model => model.Names)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Details)
+            @Html.DisplayFor(model => model.Names.Text)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.Descriptions)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartDate)
+            @Html.DisplayFor(model => model.Descriptions.Text)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.StartTime)
+            @Html.DisplayNameFor(model => model.Start)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.StartTime)
+            @Html.DisplayFor(model => model.Start.UTC)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Venue)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Venue)
-        </dd>
-
+       
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.eventID }) |
+    
     @Html.ActionLink("Back to List", "Index")
 </p>

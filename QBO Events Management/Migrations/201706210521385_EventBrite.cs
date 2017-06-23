@@ -3,10 +3,25 @@ namespace QBO_Events_Management.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class NewUpdate : DbMigration
+    public partial class EventBrite : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.EventBriteEvents",
+                c => new
+                    {
+                        ID = c.String(nullable: false, maxLength: 128),
+                        Name = c.String(),
+                        Description = c.String(),
+                        Start = c.DateTime(nullable: false),
+                        End = c.DateTime(nullable: false),
+                        Created = c.DateTime(nullable: false),
+                        Changed = c.DateTime(nullable: false),
+                        Status = c.String(),
+                    })
+                .PrimaryKey(t => t.ID);
+            
             CreateTable(
                 "dbo.Events",
                 c => new
@@ -111,6 +126,7 @@ namespace QBO_Events_Management.Migrations
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Events");
+            DropTable("dbo.EventBriteEvents");
         }
     }
 }

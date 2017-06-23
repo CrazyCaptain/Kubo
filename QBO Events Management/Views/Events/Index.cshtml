@@ -1,4 +1,4 @@
-﻿@model IEnumerable<QBO_Events_Management.Models.Event>
+﻿@model IEnumerable<QBO_Events_Management.Models.EventBriteEvent>
 
 @{
     ViewBag.Title = "Index";
@@ -11,20 +11,26 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.ID)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Details)
+                @Html.DisplayNameFor(model => model.Names)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Date)
+                @Html.DisplayNameFor(model => model.Descriptions)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Time)
+                @Html.DisplayNameFor(model => model.Start)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Venue)
+                @Html.DisplayNameFor(model => model.End)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Created)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Changed)
+            </th>            
             <th></th>
         </tr>
     </thead>
@@ -33,24 +39,31 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.ID)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Details)
+                    @Html.DisplayFor(modelItem => item.Names.Text)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Date)
+                    @Html.DisplayFor(modelItem => item.Descriptions.Text)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Time)
+                    @Html.DisplayFor(modelItem => item.Start.UTC)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Venue)
+                    @Html.DisplayFor(modelItem => item.End.UTC)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.eventID }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.eventID }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.eventID })
+                    @Html.DisplayFor(modelItem => item.Created)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Changed)
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
                 </td>
             </tr>
         }
