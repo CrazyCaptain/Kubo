@@ -12,21 +12,27 @@ namespace QBO_Events_Management.Models
     {
 
 		public string FullName { get; set; }
-		//public string Email { get; set; }
 		public bool Gender { get; set; }
-
-		////public bool EmailConfirmed { get; set; }
 		public string Address { get; set; }
-		public string PhoneNumber { get; set; }
 
 
 		public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
+			// Add custom user claims here
+			//userIdentity.AddClaim(new Claim("FullName", this.FullName));
             return userIdentity;
         }
+
+		//public static string GetFullName(this System.Security.Principal.IPrincipal usr)
+		//{
+		//	var fullNameClaim = ((ClaimsIdentity)usr.Identity).FindFirst("FullName");
+		//	if (fullNameClaim != null)
+		//		return fullNameClaim.Value;
+
+		//	return "";
+		//}
 
 		//public static implicit operator ApplicationUser(ApplicationUser v)
 		//{
@@ -47,11 +53,24 @@ namespace QBO_Events_Management.Models
             return new ApplicationDbContext();
         }
 		
-		public DbSet<Event> Events { get; set; }
-		
-        public DbSet<EventBriteEvents> EventBriteEvent { get; set; }
+		//public DbSet<Event> Events { get; set; }
 
-        public DbSet<EventAttendees> EventAttendee { get; set; }
-            
-        }
+		public DbSet<Participant> Participants { get; set; }
+
+		public DbSet<ParticipantPhoto> ParticipantPhotos { get; set; }
+		
+
+	}
+
+	//public static class GenericPrincipalExtensions
+	//{
+	//	public static string GetFullName(this System.Security.Principal.IPrincipal usr)
+	//	{
+	//		var fullNameClaim = ((ClaimsIdentity)usr.Identity).FindFirst("FullName");
+	//		if (fullNameClaim != null)
+	//			return fullNameClaim.Value;
+
+	//		return "";
+	//	}
+	//}
 }

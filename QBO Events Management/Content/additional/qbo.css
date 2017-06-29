@@ -2,20 +2,20 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
 
-body {
+body, #registerForm, #forgotpass {
+	color: #03c4eb;
 	background: black;
 	font-family: Raleway;
 	letter-spacing: 2px;
 }
 
-
-
-
 #loginForm {
 margin-top:100px;
+/*text-align:center;
+margin:auto;*/
 }
 
-#loginForm input {
+#loginForm input, #registerForm input{
 	margin-top:10px;
 	font-size: 11px;
 	/*text-transform: uppercase;*/
@@ -29,7 +29,7 @@ margin-top:100px;
 }
 
 
-#login {
+#login, #register {
 	background: #03c4eb;
 	border: none;
 	display: inline-block;
@@ -52,12 +52,37 @@ margin-top:100px;
 	width: 80%;
 }
 
+.fg label {
+	text-transform:none !important;
+	text-align:center;
+}
+
 .fg a {
 	color: #03c4eb;
-	text-decoration:none;
+	text-decoration: none;
+	text-align: center;
 }
 
 .fg a:hover {
 	color:white;	
+}
+
+#registerForm label {
+	color: #03c4eb;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 300;
+}
+
+/*#forgotpass .form-group label {
+	color: #03c4eb !important;
+	font-size: 15px;
+}*/
+
+
+.panel-primary {
+	box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 8px 8px rgba(0,0,0,0.22);
+	border: none;
+	margin: 50px;
 }
 

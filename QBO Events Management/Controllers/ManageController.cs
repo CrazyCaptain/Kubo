@@ -106,9 +106,20 @@ namespace QBO_Events_Management.Controllers
             return View();
         }
 
-        //
-        // POST: /Manage/AddPhoneNumber
-        [HttpPost]
+		public ActionResult AdminAccount()
+		{
+			return View();
+		}
+
+		public ActionResult MemberAccount()
+		{
+			return View();
+		}
+
+
+		//
+		// POST: /Manage/AddPhoneNumber
+		[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddPhoneNumber(AddPhoneNumberViewModel model)
         {

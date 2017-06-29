@@ -1,8 +1,6 @@
 ﻿@using QBO_Events_Management.Models
 @model LoginViewModel
 
-@Styles.Render("~/Content/css")
-@Styles.Render("~/Content/additional/qbo.css")
 @{
     ViewBag.Title = "Welcome to QBO";
 }
@@ -35,20 +33,19 @@
 
                 <div class="form-group">
                     <div class="col-md-12 fg">
-                        <div class="checkbox">
+                        @*<div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
                             @Html.LabelFor(m => m.RememberMe)
-                        </div>
+                        </div>*@
                         <br />
                         <p> @Html.ActionLink("Forgot your password?", "ForgotPassword") </p>
                         @*<p><a href="" data-toggle="modal" data-target="#myModal">Register</a></p>*@ @*@Html.ActionLink("Register as a new user", "Register")*@  
-                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                        @*@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })*@
                     </div>
                 </div>
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        @*<input type="submit" id="login" value="Login" class="btn btn-default" />*@
                         <button id="login" class="btn btn-default">Login</button>
                     </div>
                 </div>

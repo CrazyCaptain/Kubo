@@ -59,7 +59,8 @@ namespace QBO_Events_Management.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
-            return View("Events");
+			//return RedirectToAction("Events");
+			return View();
         }
 
         //
@@ -166,6 +167,7 @@ namespace QBO_Events_Management.Controllers
 				var result = await UserManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{
+					UserManager.AddToRole(user.Id, "Admin");
 					await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
 					// For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
@@ -174,7 +176,8 @@ namespace QBO_Events_Management.Controllers
 					var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 					await UserManager.SendEmailAsync(user.Id, "Activate your Account",  callbackUrl);
 
-					return RedirectToAction("Index", "Home");
+					return RedirectToAction("Login", "Account");
+					//return RedirectToAction("Index", "Home");
 					//MailMessage msg = new MailMessage(new MailAddress("josephbrian.manalo@benilde.edu.ph", "Joseph Manalo"),new MailAddress(user.Email));
 					//msg.Subject = "Account Confirmation";
 					//msg.Body = string.Format("Dear {0}<BR/>Thank you for your registration, please click on the below link to comlete your registration: " +
@@ -200,8 +203,7 @@ namespace QBO_Events_Management.Controllers
 				//AddErrors(result);
 
 
-
-
+				
 
 			}
 
@@ -434,6 +436,7 @@ namespace QBO_Events_Management.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
+					
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
@@ -508,12 +511,36 @@ namespace QBO_Events_Management.Controllers
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
-            return RedirectToAction("Index", "Home");
-        }
+			if (Url.IsLocalUrl(returnUrl))
+			{
+				return Redirect(returnUrl);
+			}
+
+			if (User.IsInRole("Admin"))
+			{
+
+				return RedirectToAction("ListOfEvents", "Events");
+			}
+			else
+			{
+
+				return RedirectToAction("Login", "Account");
+			}
+
+			//public ActionResult Redirect()
+			//{
+			//	if (User.IsInRole("Admin"))
+			//	{
+			//		User.
+			//		return RedirectToAction("Index", "Events");
+			//	}
+			//	else
+			//	{
+
+			//		return RedirectToAction("Index", "Home");
+			//	}
+			//}
+		}
 
         internal class ChallengeResult : HttpUnauthorizedResult
         {
