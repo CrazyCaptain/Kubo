@@ -22,7 +22,6 @@ namespace QBO_Events_Management.Controllers
 	{
 		private ApplicationDbContext db = new ApplicationDbContext();
 
-
 		public ActionResult ListOfEvents()
 		{
 			string organizer = "https://www.eventbriteapi.com/v3/organizers/14330786176/events/?token=RHB5LVF477QSIZN4JYP5";
